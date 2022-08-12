@@ -7,7 +7,7 @@ SELECT Discount * 100 AS DiscountPercantage FROM [Order Details];
 // А потом заметил, что UnitPrice.[Order Details] отличается от UnitPrice.Products даже по тем ProductID, у которых Discount = 0;
 // Поэтому нужно UnitPrice в Order Details сравнить с UnitPrice в Products и посчитать разницу в процентах:
 
-SELECT (1 - [Order Details].UnitPrice / Products.UnitPrice) * 100 FROM [Order Details], Products
+SELECT (1 - [Order Details].UnitPrice / Products.UnitPrice) * 100 as DiscountPercentage FROM [Order Details], Products
 WHERE [Order Details].ProductID = Products.ProductID;
 
 // Мне кажется, этот запрос пока выходить за рамки наших знаний, но другого пути не нашел.
